@@ -6,18 +6,24 @@
 
   $.fn.extend({
     jQFilterInput: function(options) {
-      var bindEvent, log, settings;
+      var bindEvent, log, settings, toLowerCase;
 
       settings = {
+        debug: true,
         noSpace: 'no-space',
         numberClass: 'numeric',
         integerClass: 'integer',
         posNumberClass: 'positive',
         posIntegerClass: 'positive-integer',
-        debug: true
+        emailClass: 'email-input'
       };
       settings = $.extend(settings, options);
+      toLowerCase = function($el) {
+        return $el.val($el.val().toLowerCase());
+      };
       bindEvent = function($el) {
+        var _this = this;
+
         $el.on("keydown", "input." + settings.noSpace, function(e) {
           if (e.which === 32) {
             return e.preventDefault();
@@ -58,10 +64,24 @@
             return e.preventDefault();
           }
         });
-        return $el.on("keydown", "input." + settings.posIntegerClass, function(e) {
+        $el.on("keydown", "input." + settings.posIntegerClass, function(e) {
           if (!(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105))) {
             return e.preventDefault();
           }
+        });
+        $el.on("keydown", "input." + settings.emailClass, function(e) {
+          var val;
+
+          if (!(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 47 && e.which <= 57) || (e.which >= 94 && e.which <= 126) || (e.which >= 65 && e.which <= 90) || e.which === 33 || e.which === 42 || e.which === 43 || e.which === 45 || e.which === 61 || e.which === 63 || e.which === 190 || e.which === 110 || e.which === 222 || e.which === 173 || e.which === 191 || e.which === 192 || e.which === 188 || e.which === 59 || (e.which >= 219 && e.which <= 221))) {
+            e.preventDefault();
+          }
+          val = $(this).val();
+          if (e.which === 50 && /[@]/g.test(val)) {
+            return e.preventDefault();
+          }
+        });
+        return $el.on("keyup", "input." + settings.emailClass, function(e) {
+          return toLowerCase($(e.currentTarget));
         });
       };
       log = function(msg) {
