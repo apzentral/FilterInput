@@ -40,7 +40,11 @@ $.fn.extend
 				"keydown"
 				"input.#{settings.numberClass}"
 				(e) ->
-					if e.shiftKey && not (e.which is 8 or e.which is 9 or e.which is 17 or e.which is 46 or (e.which >= 35 && e.which <= 40) or (e.which >= 48 && e.which <= 57) or (e.which >= 96 && e.which <= 105) or (e.which is 190) or (e.which is 110) or (e.which is 173))
+					if e.shiftKey
+						e.preventDefault()     # Prevent character input
+						return
+
+					if not (e.which is 8 or e.which is 9 or e.which is 17 or e.which is 46 or (e.which >= 35 && e.which <= 40) or (e.which >= 48 && e.which <= 57) or (e.which >= 96 && e.which <= 105) or (e.which is 190) or (e.which is 110) or (e.which is 173))
 						e.preventDefault()     # Prevent character input
 
 					val = $(this).val();
@@ -55,7 +59,11 @@ $.fn.extend
 				"keydown"
 				"input.#{settings.integerClass}"
 				(e) ->
-					if e.shiftKey && not (e.which is 8 or e.which is 9 or e.which is 17 or e.which is 46 or (e.which >= 35 && e.which <= 40) or (e.which >= 48 && e.which <= 57) or (e.which >= 96 && e.which <= 105) or (e.which is 173))
+					if e.shiftKey
+						e.preventDefault()     # Prevent character input
+						return
+
+					if not (e.which is 8 or e.which is 9 or e.which is 17 or e.which is 46 or (e.which >= 35 && e.which <= 40) or (e.which >= 48 && e.which <= 57) or (e.which >= 96 && e.which <= 105) or (e.which is 173))
 						e.preventDefault()     # Prevent character input
 
 					val = $(this).val();
@@ -68,7 +76,11 @@ $.fn.extend
 				"keydown"
 				"input.#{settings.posNumberClass}"
 				(e) ->
-					if e.shiftKey && not (e.which is 8 or e.which is 9 or e.which is 17 or e.which is 46 or (e.which >= 35 && e.which <= 40) or (e.which >= 48 && e.which <= 57) or (e.which >= 96 && e.which <= 105) or (e.which is 190) or (e.which is 110))
+					if e.shiftKey
+						e.preventDefault()     # Prevent character input
+						return
+
+					if not (e.which is 8 or e.which is 9 or e.which is 17 or e.which is 46 or (e.which >= 35 && e.which <= 40) or (e.which >= 48 && e.which <= 57) or (e.which >= 96 && e.which <= 105) or (e.which is 190) or (e.which is 110))
 						e.preventDefault()     # Prevent character input
 
 					val = $(this).val();
@@ -81,7 +93,11 @@ $.fn.extend
 				"keydown"
 				"input.#{settings.posIntegerClass}"
 				(e) ->
-					if e.shiftKey && not (e.which is 8 or e.which is 9 or e.which is 17 or e.which is 46 or (e.which >= 35 && e.which <= 40) or (e.which >= 48 && e.which <= 57) or (e.which >= 96 && e.which <= 105) )
+					if e.shiftKey
+						e.preventDefault()     # Prevent character input
+						return
+
+					if not (e.which is 8 or e.which is 9 or e.which is 17 or e.which is 46 or (e.which >= 35 && e.which <= 40) or (e.which >= 48 && e.which <= 57) or (e.which >= 96 && e.which <= 105) )
 						e.preventDefault()     # Prevent character input
 			)
 

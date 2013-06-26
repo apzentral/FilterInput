@@ -32,7 +32,11 @@
         $el.on("keydown", "input." + settings.numberClass, function(e) {
           var val;
 
-          if (e.shiftKey && !(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105) || (e.which === 190) || (e.which === 110) || (e.which === 173))) {
+          if (e.shiftKey) {
+            e.preventDefault();
+            return;
+          }
+          if (!(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105) || (e.which === 190) || (e.which === 110) || (e.which === 173))) {
             e.preventDefault();
           }
           val = $(this).val();
@@ -45,7 +49,11 @@
         $el.on("keydown", "input." + settings.integerClass, function(e) {
           var val;
 
-          if (e.shiftKey && !(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105) || (e.which === 173))) {
+          if (e.shiftKey) {
+            e.preventDefault();
+            return;
+          }
+          if (!(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105) || (e.which === 173))) {
             e.preventDefault();
           }
           val = $(this).val();
@@ -56,7 +64,11 @@
         $el.on("keydown", "input." + settings.posNumberClass, function(e) {
           var val;
 
-          if (e.shiftKey && !(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105) || (e.which === 190) || (e.which === 110))) {
+          if (e.shiftKey) {
+            e.preventDefault();
+            return;
+          }
+          if (!(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105) || (e.which === 190) || (e.which === 110))) {
             e.preventDefault();
           }
           val = $(this).val();
@@ -65,7 +77,11 @@
           }
         });
         $el.on("keydown", "input." + settings.posIntegerClass, function(e) {
-          if (e.shiftKey && !(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105))) {
+          if (e.shiftKey) {
+            e.preventDefault();
+            return;
+          }
+          if (!(e.which === 8 || e.which === 9 || e.which === 17 || e.which === 46 || (e.which >= 35 && e.which <= 40) || (e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105))) {
             return e.preventDefault();
           }
         });
